@@ -1,4 +1,4 @@
-ARG container_version=latest
+ARG container_version=20.04
 FROM ubuntu:${container_version}
 
 LABEL author="Nicola Spallanzani - nicola.spallanzani@nano.cnr.it - S3 centre, CNR-NANO"
