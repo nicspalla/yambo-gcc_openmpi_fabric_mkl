@@ -29,7 +29,7 @@ WORKDIR /tmpdir
 
 ### YAMBO ###
 ARG yambo_version=4.5.3
-RUN . ${SPACK_ROOT}/share/spack/setup-env.sh && spack load openmpi@4.0.2 && spack load mkl \
+RUN . ${SPACK_ROOT}/share/spack/setup-env.sh && spack load openmpi@4.0.2 && spack load intel-mkl \
  && wget https://github.com/yambo-code/yambo/archive/${yambo_version}.tar.gz -O yambo-${yambo_version}.tar.gz \
  && tar zxf yambo-${yambo_version}.tar.gz && cd yambo-${yambo_version} \
  && ./configure --enable-open-mp --enable-msgs-comps --enable-time-profile --enable-memory-profile --enable-par-linalg --enable-netcdf-hdf5 \
