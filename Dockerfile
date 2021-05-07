@@ -5,11 +5,11 @@ LABEL maintainer="Nicola Spallanzani - nicola.spallanzani@nano.cnr.it - S3 centr
 WORKDIR /tmpdir
 
 ### YAMBO ###
-ARG yambo_version=5.0.1
+ARG yambo_version=5.0.2
 RUN . ${SPACK_ROOT}/share/spack/setup-env.sh && spack load openmpi && spack load intel-mkl \
  && wget https://github.com/yambo-code/yambo/archive/${yambo_version}.tar.gz -O yambo-${yambo_version}.tar.gz \
  && tar zxf yambo-${yambo_version}.tar.gz && cd yambo-${yambo_version} \
- && ./configure --enable-open-mp --enable-msgs-comps --enable-time-profile --enable-memory-profile --enable-slepc-linalg \
+ && ./configure --enable-open-mp --enable-msgs-comps --enable-time-profile --enable-memory-profile --enable-par-linalg \
     --with-blas-libs="-L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_gf_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl" \
     --with-lapack-libs="-L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_gf_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl" \
  && make libxc fftw iotk && make hdf5 && make netcdf && make petsc slepc \
