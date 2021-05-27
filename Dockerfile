@@ -12,7 +12,7 @@ RUN . ${SPACK_ROOT}/share/spack/setup-env.sh && spack load openmpi && spack load
  && ./configure --enable-open-mp --enable-msgs-comps --enable-time-profile --enable-memory-profile --enable-par-linalg \
     --with-blas-libs="-L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_gf_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl" \
     --with-lapack-libs="-L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_gf_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl" \
- && make libxc fftw iotk && make hdf5 && make netcdf && make petsc slepc \
+ && make libxc fftw iotk && make hdf5 && make netcdf && make scalapack \
  && make -j4 yambo && make -j4 interfaces && make -j4 ypp \
  && mkdir -p /usr/local/yambo-${yambo_version}/lib \
  && cp -r bin /usr/local/yambo-${yambo_version}/. \
